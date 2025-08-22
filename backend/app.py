@@ -15,6 +15,10 @@ client = OpenAI(
 def handle_home():
     return "Ok", 200
 
+# This works
+# http://127.0.0.1:5000/no-stream
+# Content-Type application/json
+
 def generate_chat_completion(content: str) -> str:
     completion = client.chat.completions.create(
         model="chatgpt-4o-latest",
