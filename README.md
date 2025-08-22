@@ -2,12 +2,13 @@
 
 ## Run
 
-### Backend
-* Activate environment with ```backend\.venv\Scripts\activate``` (I did it on CMD Prompt)
-* Start with ```python backend/stream.py```
-* Test the backend with this command in **bash** ```curl -d '{"content": "write me a poem"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/stream```
+### Backend (within folder)
+* Activate environment with ```.venv\Scripts\activate``` (I did it on CMD Prompt)
+* Start with ```python stream.py``` (starts running on http://localhost:5000)
+* Test the backend with this command in **bash** in the backend folder ```curl -d '{"content": "write me a poem"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/stream```
 
-### Backend
+### Frontend (within folder)
+* Start with ```npm run dev``` (starts running on http://localhost:5173)
 
 ### Dev Setup
 
