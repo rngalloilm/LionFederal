@@ -1,0 +1,14 @@
+[project]
+name = "llm-chat-backend"
+version = "0.1.0"
+description = "A Flask backend for a streaming LLM chat application."
+dependencies = [
+    "flask",
+    "flask-cors",
+    "python-dotenv",
+    "openai",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
