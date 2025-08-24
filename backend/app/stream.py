@@ -44,24 +44,24 @@ def generate_chat_completion_stream(content: str) -> Generator[str, None, None]:
             yield chunk.choices[0].delta.content
 
 
-@app.post("/stream")
+@app.route("/stream", methods=['GET', 'POST'])
 def handle_stream():
-    body = request.get_json()
+    if request.method == 'POST':
+        body = request.get_json()
 
-    # Removed for step 2
-    # response = generate_chat_completion(content=body["content"])
-    # return response, 200
-
-    # Step 2: Streaming
-    def generate():
-        for chunk in generate_chat_completion_stream(content=body["content"]):
-            yield chunk
-    
-    return Response(stream_with_context(generate()))
+        # Step 2: Streaming
+        def generate():
+            for chunk in generate_chat_completion_stream(content=body["content"]):
+                print(chunk)
+                yield chunk
+        
+        # Takes my generator and returns a new generator. This new generator does two things for every item it yields:
+        # 1. Before yielding: It pushes the original request context back into place, making it active.
+        # 2. After yielding: It pops the context back off.
+        # Ensures that while my generator is executing, it has full access to the original request context as if the request were still active.
+        return Response(stream_with_context(generate()))
 
 if __name__ == "__main__":
     app.run(
         debug=True
     )
-
-generate_chat_completion_stream(content="hi")
