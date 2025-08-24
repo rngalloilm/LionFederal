@@ -4,7 +4,7 @@
 
 ### Backend (within folder)
 * Activate environment with ```.venv\Scripts\activate``` (I did it on CMD Prompt)
-* Start with ```python app/ stream.py``` (starts running on http://localhost:5000)
+* Start with ```python app/stream.py``` (starts running on http://localhost:5000)
 * Test the backend with this command in **bash** in the backend folder ```curl -d '{"content": "write me a poem"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/stream```
 
 ### Frontend (within folder)
@@ -39,6 +39,18 @@
 * [OpenAI Streaming](https://platform.openai.com/docs/guides/streaming-responses)
 
 * [OpenAI Streaming API](https://platform.openai.com/docs/api-reference/responses-streaming)
+
+* [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder)
+
+* [TextDecoder in Chunks](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
+
+* [Reponse Reader](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader)
+
+* [React Reference](https://react.dev/reference/react/useRef)
+
+* [React Reference Scrolling](https://react.dev/learn/manipulating-the-dom-with-refs)
+
+* [Web Elements](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight)
 
 * [Streaming ChatGPT API responses with python and JavaScript](https://dev.to/jethrolarson/streaming-chatgpt-api-responses-with-python-and-javascript-22d0)
 

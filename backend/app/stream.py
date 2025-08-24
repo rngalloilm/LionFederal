@@ -1,12 +1,14 @@
 import os
 from typing import Generator
 from flask import Flask, Response, request, stream_with_context
+from flask_cors import CORS
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
 app = Flask(__name__)
+CORS(app)
 
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY")
@@ -52,7 +54,7 @@ def handle_stream():
         # Step 2: Streaming
         def generate():
             for chunk in generate_chat_completion_stream(content=body["content"]):
-                print(chunk)
+                # print(chunk)
                 yield chunk
         
         # Takes my generator and returns a new generator. This new generator does two things for every item it yields:
