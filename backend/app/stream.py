@@ -18,10 +18,13 @@ def generate_chat_completion_stream(content: str) -> Generator[str, None, None]:
     completion = client.chat.completions.create(
         model="chatgpt-4o-latest",
         messages=[
-            # System prompt
+            # System prompt. Where to define the LLM's personality, rules, and goals
             {"role": "system", "content":"You are a helpful assistant."},
             {"role": "user", "content":content}
         ],
+        # Temp tunes the creativity vs the precision of the responses. Lower temp => less creative.
+        temperature=0.8,
+        # Enables chunks
         stream=True
     )
 
@@ -30,7 +33,7 @@ def generate_chat_completion_stream(content: str) -> Generator[str, None, None]:
         if chunk.choices[0].delta.content != None:
             yield chunk.choices[0].delta.content
 
-
+# Hardcoded /api/ here but would use Flask's Blueprint to prefix api to backend routes
 @app.route("/api/chat", methods=['GET', 'POST'])
 def handle_stream():
     if request.method == 'POST':

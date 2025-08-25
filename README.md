@@ -66,6 +66,8 @@
 2. ```curl -d '{"content": "write me a poem"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/stream```  Didn't work on PowerShell or CMD.
 - Do it in bash. Also, Thunder Client wont display streaming chunks.
 
+3. Forgot to add ```from flask_cors import CORS``` so the backend and frontend weren't connecting.
+
 ## AI in my Process
 
 1. Started with using AI to give me a folder structure and recieving a five phase plan.
