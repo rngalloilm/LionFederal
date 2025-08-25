@@ -27,8 +27,6 @@ import { useState, useRef, useEffect } from 'react';
 // the loop goes back to the top, hits await reader.read(), and pauses, waiting for the next chunk. 
 // This repeats - Pause, get chunk, update UI, resume, pause - until the stream is finished (done is true).
 
-// Break down const updatedMessages = [...messages, { role: 'user', content: userMessage }];
-// and while (true) {
 
 function App() {
   // Holds the list of messages in the chat
@@ -69,7 +67,7 @@ function App() {
     setMessages(prevMessages => [...prevMessages, {role: 'bot', content: ''}]);
 
     // Send the user's message to the Flask server
-    const response = await fetch("http://127.0.0.1:5000/stream", {
+    const response = await fetch("http://127.0.0.1:5000/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
