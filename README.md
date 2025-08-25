@@ -2,10 +2,20 @@
 
 ## Run
 
+### Fresh Pull
+* ```pip install uv```.
+* ```cd frontend```
+* npm install
+* Moving to backend ```cd ../```, ```cd backend```, and create a .env file.
+* ```uv venv``` while staying in backend.
+* Make sure the Python Interpreter is set to this .venv. On VS Code press ```Ctrl+Shift+P```, type ```Python: Select Interpreter```, and browse for .\.venv\Scripts\python.exe.
+* ```.venv\Scripts\activate``` on Windows. ```source .venv/bin/activate``` on Mac.
+* ```uv pip sync requirements.lock.txt```.
+
 ### Backend (within folder)
 * Activate environment with ```.venv\Scripts\activate``` (I did it on CMD Prompt)
 * Start with ```python app/stream.py``` (starts running on http://localhost:5000)
-* Test the backend with this command in **bash** in the backend folder ```curl -d '{"content": "write me a poem"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/stream```
+* Test the backend with this command in **bash** in the backend folder ```curl -d '{"content": "write me a poem"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/api/chat```
 
 ### Frontend (within folder)
 * Start with ```npm run dev``` (starts running on http://localhost:5173)
@@ -66,11 +76,11 @@
 2. ```curl -d '{"content": "write me a poem"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/stream```  Didn't work on PowerShell or CMD.
 - Do it in bash. Also, Thunder Client wont display streaming chunks.
 
-3. Forgot to add ```from flask_cors import CORS``` so the backend and frontend weren't connecting.
+3. Forgot to add ```from flask_cors import CORS``` in backend so the app was disfunctional.
 
 ## AI in my Process
 
-1. Started with using AI to give me a folder structure and recieving a five phase plan.
+1. Started with using AI to give me a folder structure and a five phase plan.
 
 ```
 Overview: This is a weeklong project and I understand Python, React, and full-stack implementation on GitHub. My weak point is the LLM and chatbot/text-streams portion of this. I also want this response to exclude any code, as this is also a learning experience, so instead, I want you to provide me with high-level content, planning, links to relevant documentation, relevant vs code extensions, and anything else you deem helpful.
@@ -84,7 +94,7 @@ Clear README with setup instructions.
 Github Repo(s) for the solution
 ```
 
-2. Getting into the frontend, I used AI as a starting point.
+2. Getting into the frontend, I used AI as a starting point in creating the html and css. It ended up being a super solid design.
 
 ```
 Create a professional chatbot frontend interface with black and white colors. A header with a title called "Chatbot" and a navigation with only this page. Only edit the css and html. Start by deleting everything in the default css file.
